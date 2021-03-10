@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>European (major) capitals &mdash; Cartes 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Cartes 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Example gallery" href="../gallery.html"/>
+        <link rel="prev" title="Example gallery" href="../gallery.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cartes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">European (major) capitals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../gallery.html">Example gallery</a> &raquo;</li>
+        
+      <li>European (major) capitals</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/gallery/capitals.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="european-major-capitals">
+<h1>European (major) capitals<a class="headerlink" href="#european-major-capitals" title="Permalink to this headline">¶</a></h1>
+<div id="capitals"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/gallery/capitals.json";
+  vegaEmbed('#capitals', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><div class="section" id="data-acquisition">
+<h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
+<p>Download nodes from capital cities in a given bounding box (west, south, east, north)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+
+<span class="n">capitals</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+    <span class="n">node</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;capital&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>None</p>
+</div>
+<div class="section" id="data-visualisation">
+<h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="kn">from</span> <span class="nn">vega_datasets</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="c1"># Capital cities information</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">capitals</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">([</span><span class="s2">&quot;name:N&quot;</span><span class="p">,</span> <span class="s2">&quot;population:Q&quot;</span><span class="p">]),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;name:en:N&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Data generators for the background</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">sphere</span><span class="p">()</span>
+<span class="n">graticule</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">graticule</span><span class="p">()</span>
+
+<span class="c1"># Source of land data</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">topo_feature</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">world_110m</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;countries&quot;</span><span class="p">)</span>
+
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="c1"># First the graticule for the projection</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">graticule</span><span class="p">())</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">),</span>
+    <span class="c1"># The map</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">),</span>
+    <span class="c1"># The points for locating the cities</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;population:Q&quot;</span><span class="p">)),</span>
+    <span class="c1"># City names if population is above 300k</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="s2">&quot;datum.population &gt; 300000&quot;</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;European (major) Capitals&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">project</span><span class="p">(</span>
+    <span class="c1"># The projection (coming soon as crs)</span>
+    <span class="s2">&quot;conicConformal&quot;</span><span class="p">,</span>
+    <span class="n">rotate</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">52</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">parallels</span><span class="o">=</span><span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_title</span><span class="p">(</span>
+    <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Fontin Sans&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;start&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../gallery.html" class="btn btn-neutral" title="Example gallery" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Xavier Olive.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Stanford-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-412789-4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-412789-4");
+</script>
+
+
+
+</body>
+</html>
