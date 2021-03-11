@@ -28,9 +28,9 @@
   
 
   
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans:regular,bold&subset=Latin&display=swap" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
   
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
   
     <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
   
@@ -41,6 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Cartes 0.1 documentation" href="../index.html"/>
         <link rel="up" title="Example gallery" href="../gallery.html"/>
+        <link rel="next" title="Tokyo metro map" href="tokyo_metro.html"/>
         <link rel="prev" title="Airport layouts" href="airports.html"/>
 <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -56,7 +57,12 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
+  
+<!-- force the fonts to be put in cache in advance -->
+<div id="ubuntu">Ubuntu <b>bold</b></div>
+<div id="fontin">Fontin Sans <b>bold</b></div>
+<div id="notojp">東京都</div>
+
   <div class="wy-grid-for-nav">
 
     
@@ -99,15 +105,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="capitals.html">European (major) capitals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="footprint.html">Building footprints in a given city</a></li>
-<li class="toctree-l2"><a class="reference internal" href="airports.html">Airport layouts</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Airport terminal layouts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../gallery.html#basic-examples">Basic examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="capitals.html">European (major) capitals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="footprint.html">Building footprints in a given city</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airports.html">Airport layouts</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Airport terminal layouts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../gallery.html#advanced-examples">Advanced examples</a></li>
 </ul>
 </li>
 </ul>
@@ -268,6 +278,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tokyo_metro.html" class="btn btn-neutral float-right" title="Tokyo metro map" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="airports.html" class="btn btn-neutral" title="Airport layouts" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

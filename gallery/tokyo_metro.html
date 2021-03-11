@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tokyo metro map &mdash; Cartes 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
+  
+
+   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Cartes 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Example gallery" href="../gallery.html"/>
+        <link rel="prev" title="Airport terminal layouts" href="terminal.html"/>
+<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<!-- Import vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+ 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<!-- force the fonts to be put in cache in advance -->
+<div id="ubuntu">Ubuntu <b>bold</b></div>
+<div id="fontin">Fontin Sans <b>bold</b></div>
+<div id="notojp">東京都</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cartes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../gallery.html#basic-examples">Basic examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../gallery.html#advanced-examples">Advanced examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tokyo metro map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zoom-in-to-downtown-tokyo">Zoom in to downtown Tokyo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../gallery.html">Example gallery</a> &raquo;</li>
+        
+      <li>Tokyo metro map</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/gallery/tokyo_metro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tokyo-metro-map">
+<h1>Tokyo metro map<a class="headerlink" href="#tokyo-metro-map" title="Permalink to this headline">¶</a></h1>
+<p>This example is obviously inspired by the example of London Tube Lines in the <a class="reference external" href="https://altair-viz.github.io/gallery/london_tube.html">Altair</a> and <a class="reference external" href="https://vega.github.io/vega-lite/examples/geo_layer_line_london.html">Vega-Lite</a> documentations.</p>
+<p>It can feel a bit frustrating when discovering those libraries not to be able to extend it easily to other cities. We pick Tokyo here, and spice it up with a bilingual map (mostly in Japanese, but English appears with the mouse.)</p>
+<div id="tokyo_global"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/gallery/tokyo_global.json";
+  vegaEmbed('#tokyo_global', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A more detailed map is built in the <a class="reference external" href="#zoom-in-to-downtown-tokyo">corresponding section</a>.</p>
+</div>
+<div class="section" id="data-acquisition">
+<h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
+<p>We will take two different datasets from OpenStreetMap: background information (the 23 Tokyo wards) and the subway lines. For people familiar with Tokyo subway systems, this does not include the JR lines (incl. Yamanote line).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+
+<span class="n">tokyo_wards</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;admin_level&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="c1"># Level 7 include cities (市) and wards (区)</span>
+    <span class="n">rel</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">admin_level</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;区$&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="n">tokyo_subway</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;admin_level&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;as_&quot;</span><span class="p">:</span> <span class="s2">&quot;tokyo&quot;</span><span class="p">},</span>
+    <span class="n">nwr</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">railway</span><span class="o">=</span><span class="s2">&quot;subway&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;tokyo&quot;</span><span class="p">),</span>  <span class="c1"># subway lines</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">station</span><span class="o">=</span><span class="s2">&quot;subway&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;tokyo&quot;</span><span class="p">),</span>  <span class="c1"># subway stations</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The map background needs to be simplified, we do not need details at very fine resolution, which would also be heavy to download.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tokyo_wards</span> <span class="o">=</span> <span class="n">tokyo_wards</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are some glitches in the metadata associated to the line segments, so there are two solutions:</p>
+<ul class="simple">
+<li><p>edit the faulty segments on OpenStreetMap;</p></li>
+<li><p>preprocess the data to correct those mistakes.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lines</span> <span class="o">=</span> <span class="n">tokyo_subway</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;type_ == &#39;way&#39; and name == name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">lines</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lines</span><span class="p">[</span><span class="s2">&quot;name:en&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Toei Mita Line&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;都営地下鉄三田線&quot;</span>
+<span class="n">lines</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lines</span><span class="p">[</span><span class="s2">&quot;name:en&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Toei Asakusa Line&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;都営地下鉄浅草線&quot;</span>
+<span class="n">lines</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lines</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;京王電鉄京王線&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Keio Railway Keio Line&quot;</span>
+</pre></div>
+</div>
+<p>We collect the official colours associated to each lines from segments where the tag is filled:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">colours</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">lines</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en&quot;</span><span class="p">,</span> <span class="s2">&quot;colour&quot;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;colour==colour&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;colour&quot;</span><span class="p">:</span> <span class="s2">&quot;max&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+  <table border="0" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>name:en</th>
+      <th>colour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>東京メトロ丸ノ内線</td>
+      <td>Tokyo Metro Marunouchi Line</td>
+      <td>#F62E36</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>東京メトロ副都心線</td>
+      <td>Tokyo Metro Fukutoshin Line</td>
+      <td>#B74D17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>東京メトロ千代田線</td>
+      <td>Tokyo Metro Chiyoda Line</td>
+      <td>#00BB85</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>東京メトロ半蔵門線</td>
+      <td>Tokyo Metro Hanzomon Line</td>
+      <td>#8F76D6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>東京メトロ南北線</td>
+      <td>Tokyo Metro Namboku Line</td>
+      <td>#00AC9B</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>東京メトロ日比谷線</td>
+      <td>Tokyo Metro Hibiya Line</td>
+      <td>#B5B5AC</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>東京メトロ有楽町線</td>
+      <td>Tokyo Metro Yurakucho Line</td>
+      <td>#C1A470</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>東京メトロ東西線</td>
+      <td>Tokyo Metro Tōzai Line</td>
+      <td>#0CA7ED</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>東京メトロ銀座線</td>
+      <td>Tokyo Metro Ginza Line</td>
+      <td>#FF9500</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>都営地下鉄三田線</td>
+      <td>Toei Mita Line</td>
+      <td>#0079C2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>都営地下鉄大江戸線</td>
+      <td>Toei Oedo Line</td>
+      <td>#B6007A</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>都営地下鉄新宿線</td>
+      <td>Toei Shinjuku Line</td>
+      <td>#6CBB5A</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>都営地下鉄浅草線</td>
+      <td>Toei Asakusa Line</td>
+      <td>#E85298</td>
+    </tr>
+  </tbody>
+</table><p>Then we merge the lines into single elements, also in order to reduce the size of resulting JSON. Line simplification does not really work well here if we want subway lines to still go through the stations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">linemerge</span>
+
+<span class="k">def</span> <span class="nf">merge_line</span><span class="p">(</span><span class="n">elt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="n">linemerge</span><span class="p">(</span><span class="n">elt</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+            <span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="n">elt</span><span class="p">[</span><span class="s2">&quot;name:en&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">lines</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">merge_line</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-visualisation">
+<h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="c1"># First the colors</span>
+<span class="n">line_scale</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="s2">&quot;name:en&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+    <span class="nb">range</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="s2">&quot;colour&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">wards</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">tokyo_wards</span><span class="p">)</span>
+
+<span class="n">basemap</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="c1"># The background</span>
+    <span class="n">wards</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gainsboro&quot;</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">strokeWidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">),</span>
+    <span class="c1"># The names of the wards: in Japanese, the in English under the mouse pointer</span>
+    <span class="n">wards</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">fontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto Sans JP&quot;</span><span class="p">,</span> <span class="n">fontWeight</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;name:ja-Latn:N&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="c1"># The subway lines: in English in the legend, bilingual under the mouse pointer</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">strokeWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span>
+            <span class="s2">&quot;name:en:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">line_scale</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Legend</span><span class="p">(</span>
+                <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;bottom-left&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">labelFont</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span> <span class="n">labelFontSize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">([</span><span class="s2">&quot;name:N&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en:N&quot;</span><span class="p">]),</span>
+    <span class="p">),</span>
+    <span class="c1"># Subway stations positions</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">tokyo_subway</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;station == station&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">mark_circle</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkslategray&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">([</span><span class="s2">&quot;name:N&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en:N&quot;</span><span class="p">]),</span>
+    <span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="n">basemap</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="zoom-in-to-downtown-tokyo">
+<h2>Zoom in to downtown Tokyo<a class="headerlink" href="#zoom-in-to-downtown-tokyo" title="Permalink to this headline">¶</a></h2>
+<div id="tokyo_central"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/gallery/tokyo_central.json";
+  vegaEmbed('#tokyo_central', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><p>On this map, we choose to:</p>
+<ul class="simple">
+<li><p>specify a projection centered on the central wards in order to be able to zoom in;</p></li>
+<li><p>display the station names in small characters;</p></li>
+<li><p>add the Yamanote line (in pale green).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Collect the Yamonote line</span>
+<span class="n">tokyo_yamanote</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;admin_level&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="n">way</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">railway</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;山手線$&quot;</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="c1"># The geometry will be enough here</span>
+<span class="n">yamanote</span> <span class="o">=</span> <span class="n">linemerge</span><span class="p">(</span><span class="n">tokyo_yamanote</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="c1"># Recall previous visualisation</span>
+    <span class="n">default</span><span class="p">,</span>
+    <span class="c1"># Some stations appear several times (once per exit?)</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">tokyo_stations</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">fontSize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Noto Sans JP&quot;</span><span class="p">,</span> <span class="n">fontWeight</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">([</span><span class="s2">&quot;name:N&quot;</span><span class="p">,</span> <span class="s2">&quot;name:en:N&quot;</span><span class="p">]),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="c1"># Yamanote line</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">yamanote</span><span class="p">)</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span>
+        <span class="n">strokeWidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#B1CB39&quot;</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">project</span><span class="p">(</span>
+    <span class="c1"># based on the coordinates of the map center</span>
+    <span class="s2">&quot;conicConformal&quot;</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">139.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.68</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">450000</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_legend</span><span class="p">(</span>
+    <span class="c1"># there is not much space for the legend, so hide what&#39;s behind</span>
+    <span class="n">fillColor</span><span class="o">=</span><span class="s2">&quot;gainsboro&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="terminal.html" class="btn btn-neutral" title="Airport terminal layouts" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Xavier Olive.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Stanford-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-412789-4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-412789-4");
+</script>
+
+
+
+</body>
+</html>
