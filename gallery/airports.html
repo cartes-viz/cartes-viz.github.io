@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Airport layouts &mdash; Cartes 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans:regular,bold&subset=Latin" type="text/css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
+  
+
+   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Cartes 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Example gallery" href="../gallery.html"/>
+        <link rel="next" title="Airport terminal layouts" href="terminal.html"/>
+        <link rel="prev" title="Building footprints in a given city" href="footprint.html"/>
+<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<!-- Import vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+ 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cartes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="capitals.html">European (major) capitals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="footprint.html">Building footprints in a given city</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Airport layouts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Airport terminal layouts</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartes</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../gallery.html">Example gallery</a> &raquo;</li>
+        
+      <li>Airport layouts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/gallery/airports.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="airport-layouts">
+<h1>Airport layouts<a class="headerlink" href="#airport-layouts" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/airports.png"><img alt="Layouts for many airports" class="align-center" src="../_images/airports.png" style="width: 680.8000000000001px; height: 663.2px;" /></a>
+<div class="section" id="data-acquisition">
+<h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
+<p>Download nodes, ways and relations with the <code class="docutils literal notranslate"><span class="pre">aeroway</span></code> tag within area marked with various IATA codes. Here in order: Amsterdam, Frankfurt, Paris, San Francisco, New York, Atlanta, Hong-Kong, Osaka Kansai and Singapore.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+
+<span class="n">airport</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">iata</span><span class="o">=</span><span class="n">iata</span><span class="p">),</span> <span class="n">aeroway</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-preprocessing">
+<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>None</p>
+</div>
+<div class="section" id="data-visualisation">
+<h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">Mercator</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">Mercator</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">locs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">AMS</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">FRA</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">CDG</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">SFO</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">JFK</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ATL</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">HKG</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">KIX</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">SIN</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax_</span><span class="p">,</span> <span class="n">iata</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">locs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+
+    <span class="c1"># Download data (or get from cache)</span>
+    <span class="n">airport</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">iata</span><span class="o">=</span><span class="n">iata</span><span class="p">),</span> <span class="n">aeroway</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">airport</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ax_</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s2">&quot;aeroway&quot;</span><span class="p">,</span>
+        <span class="c1"># Adjust some colors for this scale</span>
+        <span class="n">gate</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># mute</span>
+        <span class="n">parking_position</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># mute</span>
+        <span class="n">tower</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">markersize</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>  <span class="c1"># reduce</span>
+        <span class="n">jet_bridge</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.3&quot;</span><span class="p">),</span>  <span class="c1"># change color</span>
+        <span class="n">navigationaid</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">papi</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>  <span class="c1"># mute</span>
+    <span class="p">)</span>
+    <span class="n">ax_</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;geo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">AnchoredText</span><span class="p">(</span>
+        <span class="n">iata</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">locs</span><span class="p">[</span><span class="n">iata</span><span class="p">],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="s2">&quot;fontname&quot;</span><span class="p">:</span> <span class="s2">&quot;Fira Sans&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">ax_</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="terminal.html" class="btn btn-neutral float-right" title="Airport terminal layouts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="footprint.html" class="btn btn-neutral" title="Building footprints in a given city" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Xavier Olive.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Stanford-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-412789-4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-412789-4");
+</script>
+
+
+
+</body>
+</html>
