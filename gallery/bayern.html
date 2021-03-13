@@ -103,7 +103,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../gallery.html#basic-examples">Basic examples</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../gallery.html#advanced-examples">Advanced examples</a><ul class="current">
@@ -187,6 +186,10 @@
   <div class="section" id="license-plate-codes-in-bavaria">
 <h1>License plate codes in Bavaria<a class="headerlink" href="#license-plate-codes-in-bavaria" title="Permalink to this headline">¶</a></h1>
 <p>License plates on cars in Germany start with a one, two or three letter codes  corresponding (roughly) to small administrative circonscriptions. The keyword for Wikipedia is <a class="reference external" href="https://de.wikipedia.org/wiki/Liste_der_Kfz-Kennzeichen_in_Deutschland">Kfz-Kennzeichen</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A more comprehensive map with coats of arms is constructed in the <a class="reference external" href="#coats-of-arms">corresponding section</a>.</p>
+</div>
 <div id="bayern"></div>
 
 <script type="text/javascript">
@@ -194,11 +197,7 @@
   vegaEmbed('#bayern', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>A more comprehensive map with coats of arms is constructed in the <a class="reference external" href="#coats-of-arms">corresponding section</a>.</p>
-</div>
-<div class="section" id="data-acquisition">
+</script><div class="section" id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>Download all district (<cite>Kreisen</cite>) borders for Bavaria (Bayern in German)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -252,7 +251,7 @@
   .then(result => console.log(result))
   .catch(console.warn);
 </script><p>The first map shows one main issue: only <cite>Landkreis</cite> display a license plate code, not cities outside a <cite>Kreis</cite> (<cite>Kreisfreie Stadt</cite>).</p>
-<p>Since the data returned by OpenStreetMap contains a Wikidata identifier, we use it to fill the missing information. Since the process involves many small downloads which can be run in parallel, we use in the following example the asynchronous library <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code> rather than the popular blocking <code class="docutils literal notranslate"><span class="pre">requests</span></code> library.</p>
+<p>Since the data returned by OpenStreetMap contains a Wikidata identifier, we use it to fill the missing information. Since the whole process involves many small downloads which can be run in parallel, we use in the following example the asynchronous library <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code> rather than the popular “blocking” <code class="docutils literal notranslate"><span class="pre">requests</span></code> library.</p>
 <p>Wikidata returns comprehensive information in JSON format, with popular fields encoded with identifiers. We focus here on:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">P394</span></code>: licence plate code;</p></li>
@@ -303,10 +302,10 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">futures</span><span class="p">))</span>
 
 
-<span class="n">records</span> <span class="o">=</span> <span class="k">await</span> <span class="n">main</span><span class="p">()</span>  <span class="c1"># only valid in notebooks, otherwise asyncio.run(main())</span>
+<span class="n">records</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wikidata</span><span class="p">()</span>  <span class="c1"># only valid in notebooks, otherwise asyncio.run(main())</span>
 
 <span class="n">bayern_complete</span> <span class="o">=</span> <span class="n">bayern</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="k">await</span> <span class="n">main</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">bayern</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">id_</span><span class="p">),</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bayern</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">id_</span><span class="p">),</span>
     <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id_&quot;</span><span class="p">,</span>
     <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>

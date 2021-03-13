@@ -102,7 +102,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../gallery.html#basic-examples">Basic examples</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../gallery.html#advanced-examples">Advanced examples</a><ul class="current">
@@ -187,6 +186,13 @@
 <h1>Tokyo metro map<a class="headerlink" href="#tokyo-metro-map" title="Permalink to this headline">¶</a></h1>
 <p>This example is obviously inspired by the example of London Tube Lines in the <a class="reference external" href="https://altair-viz.github.io/gallery/london_tube.html">Altair</a> and <a class="reference external" href="https://vega.github.io/vega-lite/examples/geo_layer_line_london.html">Vega-Lite</a> documentations.</p>
 <p>It can feel a bit frustrating when discovering those libraries not to be able to extend it easily to other cities. We pick Tokyo here, and spice it up with a bilingual map (mostly in Japanese, but English appears with the mouse.)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>It may happen that the visualisation is rendered before the fonts are downloaded. In case such thing happens, a simple refresh (F5) should be enough to fix things.</p></li>
+<li><p>A close up map is built in the <a class="reference external" href="#zoom-in-to-downtown-tokyo">corresponding section</a>.</p></li>
+</ul>
+</div>
 <div id="tokyo_global"></div>
 
 <script type="text/javascript">
@@ -194,11 +200,7 @@
   vegaEmbed('#tokyo_global', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>A more detailed map is built in the <a class="reference external" href="#zoom-in-to-downtown-tokyo">corresponding section</a>.</p>
-</div>
-<div class="section" id="data-acquisition">
+</script><div class="section" id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>We will take two different datasets from OpenStreetMap: background information (the 23 Tokyo wards) and the subway lines. For people familiar with Tokyo subway systems, this does not include the JR lines (incl. Yamanote line).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
