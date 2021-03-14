@@ -108,7 +108,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#making-your-own-queries">Making your own queries</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#post-processing">Post-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#post-processing">Post-processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-simplification">Geometry simplification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graph-colouring">Graph colouring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distances-and-areas">Distances and areas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="visualisation.html">Data visualisation</a></li>
@@ -823,16 +828,227 @@
 </div>
 <div class="section" id="post-processing">
 <h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="geometry-simplification">
+<h3>Geometry simplification<a class="headerlink" href="#geometry-simplification" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">simplify()</span></code> method associated to GeoPandas dataframes comes from Shapely. Its major default comes from the fact that two neighbouring geometries may be simplified differently on the borders they share.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+
+<span class="n">toulouse</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Toulouse&quot;</span><span class="p">,</span> <span class="s2">&quot;admin_level&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+    <span class="n">rel</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;boundary&quot;</span><span class="p">:</span> <span class="s2">&quot;postal_code&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+    <span class="n">toulouse</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">geometry</span><span class="o">=</span><span class="n">toulouse</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+        <span class="c1"># Switch to Lambert93 to simplify (resolution 500m)</span>
+        <span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">2154</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span>
+        <span class="c1"># Switch back to WGS84 (lat/lon)</span>
+        <span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;postal_code:N&quot;</span><span class="p">)),</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">14</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;postal_code:N&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div id="simplify_naive"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/simplify_naive.json";
+  vegaEmbed('#simplify_naive', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><p>The Cartes library provies a different <code class="docutils literal notranslate"><span class="pre">.simplify()</span></code> method on <code class="docutils literal notranslate"><span class="pre">Overpass</span></code> structures:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">hconcat</span><span class="p">(</span>
+    <span class="o">*</span><span class="nb">list</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">toulouse</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="n">value</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;postal_code:N&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;simplify(</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e2</span><span class="p">,</span> <span class="mf">5e2</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div id="simplify_cartes"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/simplify_cartes.json";
+  vegaEmbed('#simplify_cartes', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script></div>
+<div class="section" id="graph-colouring">
+<h3>Graph colouring<a class="headerlink" href="#graph-colouring" title="Permalink to this headline">¶</a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>TODO</p>
 </div>
 <ul class="simple">
-<li><p>simplify()  # toulouse code_postal</p></li>
-<li><p>coloring()  # redirect Bayern</p></li>
-<li><p>area()   # sorted -&gt; parks?</p></li>
-<li><p>length()  # rivières</p></li>
+<li><p>coloring() # 48 states?</p></li>
 </ul>
+</div>
+<div class="section" id="distances-and-areas">
+<h3>Distances and areas<a class="headerlink" href="#distances-and-areas" title="Permalink to this headline">¶</a></h3>
+<p>The methods <code class="docutils literal notranslate"><span class="pre">.area()</span></code> and <code class="docutils literal notranslate"><span class="pre">.length()</span></code> compute the area (resp. the length) of each geometry in square meters (resp. meters). They can be useful to select, sort or visualise geometries based on this criterion.</p>
+<p>In the following example, we sort Helsinki public parks by size:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parks</span><span class="o">.</span><span class="n">area</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+  <style scoped>
+    .dataframe tbody tr th:only-of-type {
+      vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+      vertical-align: top;
+    }
+
+    .dataframe thead th {
+      text-align: right;
+    }
+  </style>
+  <table border="0" class="dataframe">
+    <thead>
+      <tr style="text-align: right">
+        <th></th>
+        <th>id_</th>
+        <th>type_</th>
+        <th>geometry</th>
+        <th>leisure</th>
+        <th>name</th>
+        <th>name:fi</th>
+        <th>...</th>
+        <th>area</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>149</th>
+        <td>208985860</td>
+        <td>way</td>
+        <td>POLYGON ((24.92436 60.19148, 24.92434 60.19147...</td>
+        <td>park</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>...</td>
+        <td>1.093153e+07</td>
+      </tr>
+      <tr>
+        <th>80</th>
+        <td>208985860</td>
+        <td>way</td>
+        <td>POLYGON ((24.92436 60.19148, 24.92434 60.19147...</td>
+        <td>park</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>...</td>
+        <td>1.093153e+07</td>
+      </tr>
+      <tr>
+        <th>142</th>
+        <td>208985860</td>
+        <td>way</td>
+        <td>POLYGON ((24.92436 60.19148, 24.92434 60.19147...</td>
+        <td>park</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>Helsingin keskuspuisto</td>
+        <td>...</td>
+        <td>1.093153e+07</td>
+      </tr>
+      <tr>
+        <th>...</th>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <th>100</th>
+        <td>47429588</td>
+        <td>way</td>
+        <td>POLYGON ((24.95763 60.19529, 24.95736 60.19543...</td>
+        <td>park</td>
+        <td>Someronpuistikko</td>
+        <td>NaN</td>
+        <td>...</td>
+        <td>1.253333e+03</td>
+      </tr>
+      <tr>
+        <th>101</th>
+        <td>228246499</td>
+        <td>way</td>
+        <td>POLYGON ((24.96169 60.19272, 24.96184 60.19279...</td>
+        <td>park</td>
+        <td>Vallilantien puisto</td>
+        <td>Vallilantien puisto</td>
+        <td>...</td>
+        <td>1.233400e+03</td>
+      </tr>
+      <tr>
+        <th>112</th>
+        <td>553732423</td>
+        <td>way</td>
+        <td>POLYGON ((25.03069 60.18548, 25.03091 60.18549...</td>
+        <td>park</td>
+        <td>Neitojenpuisto</td>
+        <td>Neitojenpuisto</td>
+        <td>...</td>
+        <td>9.617457e+02</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>194 rows × 41 columns</p>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">.length()</span></code> method, we can imagine the following use case to filter rivers by their length:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">riviera</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alpes-Maritimes&quot;</span><span class="p">,</span> <span class="s2">&quot;as_&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">},</span>
+    <span class="n">rel</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span>  <span class="c1"># the administrative region</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">waterway</span><span class="o">=</span><span class="s2">&quot;river&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>  <span class="c1"># the rivers</span>
+    <span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="c1"># The administrative region</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">riviera</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;boundary==&quot;administrative&quot;&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">),</span>
+    <span class="c1"># The rivers</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">riviera</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;waterway==&quot;river&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+        <span class="c1"># at least 20k long, and remove one going to a different drainage basin</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;length &gt; 20_000 and id_ != 7203495&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">)),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Main rivers of French Riviera&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_title</span><span class="p">(</span>
+    <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Fira Sans&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;start&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div id="riviera"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/riviera.json";
+  vegaEmbed('#riviera', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script></div>
 </div>
 </div>
 

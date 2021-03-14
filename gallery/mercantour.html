@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Peaks in Mercantour National Park &mdash; Cartes 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
+  <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="License plate codes in Bavaria" href="bayern.html" />
+    <link rel="prev" title="Airport terminal layouts" href="terminal.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+<!-- force the fonts to be put in cache in advance -->
+<div id="ubuntu">Ubuntu <b>bold</b></div>
+<div id="fontin">Fontin Sans <b>bold</b></div>
+<div id="notojp">東京都</div>
+
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Cartes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections.html">CRS and projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osm.html">OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Data visualisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../gallery.html">Example gallery</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../gallery.html#basic-examples">Basic examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="capitals.html">European (major) capitals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="footprint.html">Building footprints in a given city</a></li>
+<li class="toctree-l3"><a class="reference internal" href="airports.html">Airport layouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="terminal.html">Airport terminal layouts</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Peaks in Mercantour National Park</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-acquisition">Data acquisition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-visualisation">Data visualisation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../gallery.html#advanced-examples">Advanced examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alternatives.html">Alternative libraries</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Cartes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../gallery.html">Example gallery</a> &raquo;</li>
+        
+      <li>Peaks in Mercantour National Park</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/gallery/mercantour.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="peaks-in-mercantour-national-park">
+<h1>Peaks in Mercantour National Park<a class="headerlink" href="#peaks-in-mercantour-national-park" title="Permalink to this headline">¶</a></h1>
+<div id="mercantour"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/gallery/mercantour.json";
+  vegaEmbed('#mercantour', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><div class="section" id="data-acquisition">
+<h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Get the administrative boundaries and major rivers (see <a class="reference external" href="osm.html#distances-and-areas">here</a>)</p></li>
+<li><p>Get the peaks inside the Mercantour National Park</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+
+<span class="n">riviera</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alpes-Maritimes&quot;</span><span class="p">,</span> <span class="s2">&quot;as_&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">},</span>
+    <span class="n">rel</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span>  <span class="c1"># the administrative region</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">waterway</span><span class="o">=</span><span class="s2">&quot;river&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>  <span class="c1"># the rivers</span>
+    <span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span>
+
+
+<span class="n">mercantour</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">boundary</span><span class="o">=</span><span class="s2">&quot;protected_area&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;Mercantour&quot;</span><span class="p">),</span>
+        <span class="n">as_</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># The area</span>
+    <span class="n">rel</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span>
+    <span class="c1"># The peaks</span>
+    <span class="n">node</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">natural</span><span class="o">=</span><span class="s2">&quot;peak&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-visualisation">
+<h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="c1"># The administrative region</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">riviera</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;boundary==&quot;administrative&quot;&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">),</span>
+    <span class="c1"># The rivers</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">riviera</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;waterway==&quot;river&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+        <span class="c1"># at least 20k long, and remove one going to a different drainage basin</span>
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;length &gt; 20_000 and id_ != 7203495&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">)),</span>
+    <span class="c1"># The National park (simplified)</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span>
+        <span class="n">mercantour</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;boundary == &quot;protected_area&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span>
+        <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;darkseagreen&quot;</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;darkseagreen&quot;</span><span class="p">,</span>
+        <span class="n">strokeWidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1"># The peaks</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">mercantour</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;natural == &quot;peak&quot;&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Tooltip</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span>
+            <span class="s2">&quot;ele:Q&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Altitude (m)&quot;</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;darkmulti&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s2">&quot;triangle-up&quot;</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sommets du Massif du Mercantour&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_title</span><span class="p">(</span>
+    <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Fira Sans&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;start&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="bayern.html" class="btn btn-neutral float-right" title="License plate codes in Bavaria" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="terminal.html" class="btn btn-neutral float-left" title="Airport terminal layouts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Xavier Olive.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-412789-4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-412789-4");
+</script>
+
+
+
+</body>
+</html>
