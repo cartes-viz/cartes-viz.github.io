@@ -867,14 +867,15 @@
   .then(result => console.log(result))
   .catch(console.warn);
 </script><p>The Cartes library provies a different <code class="docutils literal notranslate"><span class="pre">.simplify()</span></code> method on <code class="docutils literal notranslate"><span class="pre">Overpass</span></code> structures:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">hconcat</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
     <span class="o">*</span><span class="nb">list</span><span class="p">(</span>
         <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">toulouse</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="n">value</span><span class="p">))</span>
         <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span>
         <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;postal_code:N&quot;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;simplify(</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e2</span><span class="p">,</span> <span class="mf">5e2</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">]</span>
-    <span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
 </pre></div>
 </div>
