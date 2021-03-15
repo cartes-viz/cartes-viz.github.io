@@ -103,7 +103,10 @@
 <li class="toctree-l1"><a class="reference internal" href="osm.html">OpenStreetMap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualisation.html">Data visualisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Example gallery</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#http-error-429">HTTP Error 429</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="alternatives.html">Alternative libraries</a></li>
 </ul>
 
@@ -174,6 +177,18 @@
             
   <div class="section" id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="http-error-429">
+<h2>HTTP Error 429<a class="headerlink" href="#http-error-429" title="Permalink to this headline">¶</a></h2>
+<p>You may be subject to quotas when you send numerous requests to the Overpass API. If you get this error, you will see the result of a call to <a class="reference external" href="https://overpass-api.de/api/status">https://overpass-api.de/api/status</a> with details about your quota and next available slots:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Connected as: 866011160
+Current time: 2021-03-15T09:14:16Z
+Rate limit: 2
+Slot available after: 2021-03-15T09:30:24Z, in 968 seconds.
+Currently running queries (pid, space limit, time limit, start time):
+14803       536870912       180     2021-03-15T09:12:33Z
+</pre></div>
+</div>
+</div>
 </div>
 
 

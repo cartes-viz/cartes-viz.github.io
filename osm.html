@@ -889,13 +889,64 @@
 </script></div>
 <div class="section" id="graph-colouring">
 <h3>Graph colouring<a class="headerlink" href="#graph-colouring" title="Permalink to this headline">¶</a></h3>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>TODO</p>
+<p>The four-colour theorem states that you can color a map with no more than 4 colors. If you only base yourself on the name of the regions you will map, you will use many colors, at the risk of looping and use the same (or similar) colors for two neighbouring regions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Overpass</span></code> object offers as <code class="docutils literal notranslate"><span class="pre">.coloring()</span></code> method which builds a NetworkX graph and computes a greedy colouring algorithm on it.</p>
+<p>The following map of administrative states of Austria and colours it with both methods. The resulting graph is also accessible via the <code class="docutils literal notranslate"><span class="pre">graph</span></code> attribute.</p>
+<div id="austria"></div>
+
+<script type="text/javascript">
+  var spec = "../_static/austria.json";
+  vegaEmbed('#austria', spec)
+  .then(result => console.log(result))
+  .catch(console.warn);
+</script><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="n">austria</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+    <span class="n">area</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Österreich&quot;</span><span class="p">),</span> <span class="n">rel</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">admin_level</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span><span class="o">.</span><span class="n">coloring</span><span class="p">()</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">austria</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;lat1&quot;</span><span class="p">:</span> <span class="n">austria</span><span class="p">[</span><span class="n">e1</span><span class="p">]</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="s2">&quot;lon1&quot;</span><span class="p">:</span> <span class="n">austria</span><span class="p">[</span><span class="n">e1</span><span class="p">]</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+            <span class="s2">&quot;lat2&quot;</span><span class="p">:</span> <span class="n">austria</span><span class="p">[</span><span class="n">e2</span><span class="p">]</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="s2">&quot;lon2&quot;</span><span class="p">:</span> <span class="n">austria</span><span class="p">[</span><span class="n">e2</span><span class="p">]</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span> <span class="ow">in</span> <span class="n">austria</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">vconcat</span><span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;name:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;set2&quot;</span><span class="p">))),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">hconcat</span><span class="p">(</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+            <span class="n">base</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;coloring:N&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;set2&quot;</span><span class="p">))</span>
+            <span class="p">),</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">fontSize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+            <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;lat1&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;lon1&quot;</span><span class="p">),</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Latitude2</span><span class="p">(</span><span class="s2">&quot;lat2&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude2</span><span class="p">(</span><span class="s2">&quot;lon2&quot;</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Latitude</span><span class="p">(</span><span class="s2">&quot;latitude:Q&quot;</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">Longitude</span><span class="p">(</span><span class="s2">&quot;longitude:Q&quot;</span><span class="p">),</span>
+                <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s2">&quot;coloring:N&quot;</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">fontSize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Ubuntu&quot;</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">10</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
-<ul class="simple">
-<li><p>coloring() # 48 states?</p></li>
-</ul>
 </div>
 <div class="section" id="distances-and-areas">
 <h3>Distances and areas<a class="headerlink" href="#distances-and-areas" title="Permalink to this headline">¶</a></h3>
