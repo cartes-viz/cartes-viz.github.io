@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overpass-api">Overpass API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overpass-ql-as-is">Overpass QL “as is”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#a-simple-request-for-query-language-ql-illiterate-people">A simple request for Query Language (QL) illiterate people</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#making-your-own-queries">Making your own queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-your-own-queries">Writing your own queries</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#post-processing">Post-processing</a><ul>
@@ -770,8 +770,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="making-your-own-queries">
-<h3>Making your own queries<a class="headerlink" href="#making-your-own-queries" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="writing-your-own-queries">
+<h3>Writing your own queries<a class="headerlink" href="#writing-your-own-queries" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The API may change in the coming weeks. Different use cases may lead to different specifications.</p>
@@ -807,23 +807,53 @@
 </div>
 </div></blockquote>
 <ul>
-<li><p>the <code class="docutils literal notranslate"><span class="pre">node</span></code>, <code class="docutils literal notranslate"><span class="pre">way</span></code>, <code class="docutils literal notranslate"><span class="pre">rel</span></code> (relation) and <code class="docutils literal notranslate"><span class="pre">nwr</span></code> (node-way-relation) keywords:</p>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">node</span></code>, <code class="docutils literal notranslate"><span class="pre">way</span></code>, <code class="docutils literal notranslate"><span class="pre">rel</span></code> (relation) and <code class="docutils literal notranslate"><span class="pre">nwr</span></code> (node-way-relation) keywords. The accept a dictionary specifying the request or a list of dictionaries:</p>
 <blockquote>
-<div><div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>TODO</p>
+<div><ul>
+<li><p>the keys in the dictionary refer to the tag to be matched, the values to the value to be set to the tag. If you want to match all values, set it to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nwr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div></blockquote>
 </li>
-<li><p>any other keyword arguments are collected and passed as a dictionary to the <code class="docutils literal notranslate"><span class="pre">nwr</span></code> keyword:</p>
+<li><p>if the <code class="docutils literal notranslate"><span class="pre">node</span></code> (or <code class="docutils literal notranslate"><span class="pre">way</span></code>, or …) must be within a named area, specify the <code class="docutils literal notranslate"><span class="pre">area</span></code> keyword;</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Helsinki&quot;</span><span class="p">,</span> <span class="s2">&quot;as_&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">},</span>
+<span class="n">nwr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>if the match is not exact, but refers to a regular expression, you may nest a dictionary with the <code class="docutils literal notranslate"><span class="pre">regex</span></code> key:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># name must end with park or Park</span>
+<span class="n">nwr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;[Pp]ark$&quot;</span><span class="p">))</span>
+<span class="c1"># name must be empty</span>
+<span class="n">nwr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;^$&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>use a list if you want several elements:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get both parks and railway stations</span>
+<span class="n">nwr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">railway</span><span class="o">=</span><span class="s2">&quot;station&quot;</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>any other keyword arguments are collected and passed as a dictionary to the <code class="docutils literal notranslate"><span class="pre">nwr</span></code> keyword:</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># All those notations are equivalent:</span>
 <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;Helsinki&quot;</span><span class="p">,</span> <span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">)</span>
 <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;Helsinki&quot;</span><span class="p">,</span> <span class="n">nwr</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park&quot;</span><span class="p">))</span>
 <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;Helsinki&quot;</span><span class="p">,</span> <span class="n">nwr</span><span class="o">=</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park)])</span>
 </pre></div>
 </div>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="post-processing">
