@@ -4,10 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Airport layouts &mdash; Cartes 0.1 documentation</title>
+  <title>Airport layouts &mdash; Cartes 0.2 documentation</title>
   
 
   
@@ -190,10 +191,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="airport-layouts">
+  <section id="airport-layouts">
 <h1>Airport layouts<a class="headerlink" href="#airport-layouts" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="../_images/airports.png"><img alt="Layouts for many airports" class="align-center" src="../_images/airports.png" style="width: 680.8000000000001px; height: 663.2px;" /></a>
-<div class="section" id="data-acquisition">
+<section id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>Download nodes, ways and relations with the <code class="docutils literal notranslate"><span class="pre">aeroway</span></code> tag within area marked with various IATA codes. Here in order: Amsterdam, Frankfurt, Paris, San Francisco, New York, Atlanta, Hong-Kong, Osaka Kansai and Singapore.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -201,12 +202,12 @@
 <span class="n">airport</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">iata</span><span class="o">=</span><span class="n">iata</span><span class="p">),</span> <span class="n">aeroway</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="data-preprocessing">
+</section>
+<section id="data-preprocessing">
 <h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>None</p>
-</div>
-<div class="section" id="data-visualisation">
+</section>
+<section id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">Mercator</span>
@@ -242,8 +243,8 @@
     <span class="n">ax_</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

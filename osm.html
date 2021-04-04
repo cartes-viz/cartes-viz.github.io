@@ -4,10 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>OpenStreetMap &mdash; Cartes 0.1 documentation</title>
+  <title>OpenStreetMap &mdash; Cartes 0.2 documentation</title>
   
 
   
@@ -187,10 +188,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="openstreetmap">
+  <section id="openstreetmap">
 <h1>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Permalink to this headline">¶</a></h1>
 <p>The library offers some facilities to request and parse the results from the OpenStreetMap Nominatim (search engine) and Overpass (map data database) API.</p>
-<div class="section" id="nominatim-api">
+<section id="nominatim-api">
 <h2>Nominatim API<a class="headerlink" href="#nominatim-api" title="Permalink to this headline">¶</a></h2>
 <p>You may search for a name or address (forward search) or look up data by its geographic coordinate (reverse search) or by its OpenStreetMap identifier.</p>
 <ul>
@@ -567,12 +568,12 @@
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="overpass-api">
+</section>
+<section id="overpass-api">
 <h2>Overpass API<a class="headerlink" href="#overpass-api" title="Permalink to this headline">¶</a></h2>
 <p>The Overpass API is a read-only API to selected parts of the OpenStreetMap data. It acts as a database where the end user can send queries using a dedicated <cite>query language</cite> (<a class="reference external" href="https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example">Overpass QL</a>) in order to collect nodes, ways and relations referenced in OpenStreetMap.</p>
 <p>The cartes library offers a direct access, with some helpers to generate the queries from a more natural Python call. The whole Overpass QL possibilities are not covered, but most simple use cases are.</p>
-<div class="section" id="overpass-ql-as-is">
+<section id="overpass-ql-as-is">
 <h3>Overpass QL “as is”<a class="headerlink" href="#overpass-ql-as-is" title="Permalink to this headline">¶</a></h3>
 <p>If you know how to write your query in Overpass QL, you can still benefit from the caching and parsing possibilities of the library with the query argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -745,8 +746,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">parks.json</span></code> returns the raw JSON data received.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="a-simple-request-for-query-language-ql-illiterate-people">
+</section>
+<section id="a-simple-request-for-query-language-ql-illiterate-people">
 <h3>A simple request for Query Language (QL) illiterate people<a class="headerlink" href="#a-simple-request-for-query-language-ql-illiterate-people" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">This request selects all parks within Helsinki area where playgrounds for kids are available.</div>
@@ -769,8 +770,8 @@
 <span class="c1"># [out:json][timeout:180];area[name=Helsinki];nwr(area)[leisure=park];out geom;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="writing-your-own-queries">
+</section>
+<section id="writing-your-own-queries">
 <h3>Writing your own queries<a class="headerlink" href="#writing-your-own-queries" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -854,11 +855,11 @@
 <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;Helsinki&quot;</span><span class="p">,</span> <span class="n">nwr</span><span class="o">=</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">leisure</span><span class="o">=</span><span class="s2">&quot;park)])</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="post-processing">
+</section>
+</section>
+<section id="post-processing">
 <h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="geometry-simplification">
+<section id="geometry-simplification">
 <h3>Geometry simplification<a class="headerlink" href="#geometry-simplification" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">simplify()</span></code> method associated to GeoPandas dataframes comes from Shapely. Its major default comes from the fact that two neighbouring geometries may be simplified differently on the borders they share.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -916,8 +917,8 @@
   vegaEmbed('#simplify_cartes', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script></div>
-<div class="section" id="graph-colouring">
+</script></section>
+<section id="graph-colouring">
 <h3>Graph colouring<a class="headerlink" href="#graph-colouring" title="Permalink to this headline">¶</a></h3>
 <p>The four-colour theorem states that you can color a map with no more than 4 colors. If you only base yourself on the name of the regions you will map, you will use many colors, at the risk of looping and use the same (or similar) colors for two neighbouring regions.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Overpass</span></code> object offers as <code class="docutils literal notranslate"><span class="pre">.coloring()</span></code> method which builds a NetworkX graph and computes a greedy colouring algorithm on it.</p>
@@ -974,8 +975,8 @@
 <span class="p">)</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;independent&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="distances-and-areas">
+</section>
+<section id="distances-and-areas">
 <h3>Distances and areas<a class="headerlink" href="#distances-and-areas" title="Permalink to this headline">¶</a></h3>
 <p>The methods <code class="docutils literal notranslate"><span class="pre">.area()</span></code> and <code class="docutils literal notranslate"><span class="pre">.length()</span></code> compute the area (resp. the length) of each geometry in square meters (resp. meters). They can be useful to select, sort or visualise geometries based on this criterion.</p>
 <p>In the following example, we sort Helsinki public parks by size:</p>
@@ -1127,9 +1128,9 @@
   vegaEmbed('#riviera', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script></div>
-</div>
-</div>
+</script></section>
+</section>
+</section>
 
 
            </div>

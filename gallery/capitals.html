@@ -4,10 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>European (major) capitals &mdash; Cartes 0.1 documentation</title>
+  <title>European (major) capitals &mdash; Cartes 0.2 documentation</title>
   
 
   
@@ -190,7 +191,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="european-major-capitals">
+  <section id="european-major-capitals">
 <h1>European (major) capitals<a class="headerlink" href="#european-major-capitals" title="Permalink to this headline">¶</a></h1>
 <div id="capitals"></div>
 
@@ -199,7 +200,7 @@
   vegaEmbed('#capitals', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script><div class="section" id="data-acquisition">
+</script><section id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>Download nodes from capital cities in a given bounding box (west, south, east, north)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -210,12 +211,12 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="data-preprocessing">
+</section>
+<section id="data-preprocessing">
 <h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>None</p>
-</div>
-<div class="section" id="data-visualisation">
+</section>
+<section id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 <span class="kn">from</span> <span class="nn">vega_datasets</span> <span class="kn">import</span> <span class="n">data</span>
@@ -258,8 +259,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

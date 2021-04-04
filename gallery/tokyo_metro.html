@@ -4,10 +4,11 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Tokyo metro map &mdash; Cartes 0.1 documentation</title>
+  <title>Tokyo metro map &mdash; Cartes 0.2 documentation</title>
   
 
   
@@ -188,7 +189,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tokyo-metro-map">
+  <section id="tokyo-metro-map">
 <h1>Tokyo metro map<a class="headerlink" href="#tokyo-metro-map" title="Permalink to this headline">¶</a></h1>
 <p>This example is obviously inspired by the example of London Tube Lines in the <a class="reference external" href="https://altair-viz.github.io/gallery/london_tube.html">Altair</a> and <a class="reference external" href="https://vega.github.io/vega-lite/examples/geo_layer_line_london.html">Vega-Lite</a> documentations.</p>
 <p>It can feel a bit frustrating when discovering those libraries not to be able to extend it easily to other cities. We pick Tokyo here, and spice it up with a bilingual map (mostly in Japanese, but English appears with the mouse.)</p>
@@ -206,7 +207,7 @@
   vegaEmbed('#tokyo_global', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script><div class="section" id="data-acquisition">
+</script><section id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>We will take two different datasets from OpenStreetMap: background information (the 23 Tokyo wards) and the subway lines. For people familiar with Tokyo subway systems, this does not include the JR lines (incl. Yamanote line).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -226,8 +227,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="data-preprocessing">
+</section>
+<section id="data-preprocessing">
 <h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>The map background needs to be simplified, we do not need details at very fine resolution, which would also be heavy to download.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tokyo_wards</span> <span class="o">=</span> <span class="n">tokyo_wards</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span>
@@ -362,8 +363,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="data-visualisation">
+</section>
+<section id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 
@@ -407,8 +408,8 @@
 <span class="n">basemap</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="zoom-in-to-downtown-tokyo">
+</section>
+<section id="zoom-in-to-downtown-tokyo">
 <h2>Zoom in to downtown Tokyo<a class="headerlink" href="#zoom-in-to-downtown-tokyo" title="Permalink to this headline">¶</a></h2>
 <div id="tokyo_central"></div>
 
@@ -455,8 +456,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
