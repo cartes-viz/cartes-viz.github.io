@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>CRS and projections &mdash; Cartes 0.2 documentation</title>
@@ -14,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
   <link rel="stylesheet" href="_static/main_stylesheet.css" type="text/css" />
@@ -33,6 +34,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -178,10 +180,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="crs-and-projections">
+  <div class="section" id="crs-and-projections">
 <h1>CRS and projections<a class="headerlink" href="#crs-and-projections" title="Permalink to this headline">¶</a></h1>
 <p>Cartopy provides few default projections, documented on their <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/crs/projections.html">webpage</a>. Cartes extends these definitions with a full set of projections as defined by the <code class="docutils literal notranslate"><span class="pre">libproj</span></code> C library.</p>
-<section id="introduction-example">
+<div class="section" id="introduction-example">
 <h2>Introduction example<a class="headerlink" href="#introduction-example" title="Permalink to this headline">¶</a></h2>
 <p>For instance, the Lambert93 projection is the default official one in France, used for tiles by the National Geographic Institute (IGN).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">Lambert93</span>
@@ -4176,8 +4178,8 @@ L 7.2 170.28
 <p class="admonition-title">Warning</p>
 <p>Classes are generated dynamically based on their description in the <code class="docutils literal notranslate"><span class="pre">libproj</span></code> library. A star import would not work here.</p>
 </div>
-</section>
-<section id="valid-projections-at-a-given-location">
+</div>
+<div class="section" id="valid-projections-at-a-given-location">
 <h2>Valid projections at a given location<a class="headerlink" href="#valid-projections-at-a-given-location" title="Permalink to this headline">¶</a></h2>
 <p>A list of valid projections is available with a call to the <code class="docutils literal notranslate"><span class="pre">valid_crs</span></code> functioni which accepts a string or any object implementing the <code class="docutils literal notranslate"><span class="pre">__geo_interface__</span></code> protocol:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">valid_crs</span>
@@ -6525,8 +6527,8 @@ L 7.2 170.28
   </clipPath>
  </defs>
 </svg>
-<pre>&lt;abc.EPSG_3034 object at 0x7fbc5618b770&gt;</pre></section>
-<section id="adjusting-bounds-for-a-projection">
+<pre>&lt;abc.EPSG_3034 object at 0x7fbc5618b770&gt;</pre></div>
+<div class="section" id="adjusting-bounds-for-a-projection">
 <h2>Adjusting bounds for a projection<a class="headerlink" href="#adjusting-bounds-for-a-projection" title="Permalink to this headline">¶</a></h2>
 <p>Some definitions in the library set very narrow bounds which are then incompatible with plotting in a larger area. It is possible to set different bounds by subclassing the projection.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes</span> <span class="kn">import</span> <span class="n">crs</span>
@@ -11520,8 +11522,8 @@ L 7.2 170.28
   </clipPath>
  </defs>
 </svg>
-<pre>&lt;__main__.Custom object at 0x7fbc4d348090&gt;</pre></section>
-</section>
+<pre>&lt;__main__.Custom object at 0x7fbc4d348090&gt;</pre></div>
+</div>
 
 
            </div>

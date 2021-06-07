@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Building footprints in a given city &mdash; Cartes 0.2 documentation</title>
@@ -14,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
   <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
@@ -33,6 +34,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -191,10 +193,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="building-footprints-in-a-given-city">
+  <div class="section" id="building-footprints-in-a-given-city">
 <h1>Building footprints in a given city<a class="headerlink" href="#building-footprints-in-a-given-city" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="../_images/antibes.png"><img alt="Antibes building footprint" class="align-center" src="../_images/antibes.png" style="width: 511.25px; height: 683.0px;" /></a>
-<section id="data-acquisition">
+<div class="section" id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>Download nodes, ways and relations inside the area named Antibes (city in the French riviera) with a <code class="docutils literal notranslate"><span class="pre">building</span></code> tag.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -202,12 +204,12 @@
 <span class="n">antibes</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">area</span><span class="o">=</span><span class="s2">&quot;Antibes&quot;</span><span class="p">,</span> <span class="n">building</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="data-preprocessing">
+</div>
+<div class="section" id="data-preprocessing">
 <h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>None</p>
-</section>
-<section id="data-visualisation">
+</div>
+<div class="section" id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">Lambert93</span>
 
@@ -229,8 +231,8 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

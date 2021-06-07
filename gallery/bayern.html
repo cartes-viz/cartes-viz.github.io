@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>License plate codes in Bavaria &mdash; Cartes 0.2 documentation</title>
@@ -14,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans|Ubuntu:regular,bold&subset=Latin&display=swap" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans JP:thin,regular,bold&display=swap" type="text/css" />
   <link rel="stylesheet" href="../_static/main_stylesheet.css" type="text/css" />
@@ -33,6 +34,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -189,7 +191,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="license-plate-codes-in-bavaria">
+  <div class="section" id="license-plate-codes-in-bavaria">
 <h1>License plate codes in Bavaria<a class="headerlink" href="#license-plate-codes-in-bavaria" title="Permalink to this headline">¶</a></h1>
 <p>License plates on cars in Germany start with a one, two or three letter codes  corresponding (roughly) to small administrative circonscriptions. The keyword for Wikipedia is <a class="reference external" href="https://de.wikipedia.org/wiki/Liste_der_Kfz-Kennzeichen_in_Deutschland">Kfz-Kennzeichen</a>.</p>
 <div class="admonition warning">
@@ -203,7 +205,7 @@
   vegaEmbed('#bayern', spec)
   .then(result => console.log(result))
   .catch(console.warn);
-</script><section id="data-acquisition">
+</script><div class="section" id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>Download all district (<cite>Kreisen</cite>) borders for Bavaria (Bayern in German)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
@@ -216,8 +218,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="data-preprocessing">
+</div>
+<div class="section" id="data-preprocessing">
 <h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>Simplify the borders for all districts and assign colours so that no two neighbouring districts get the same colour.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1st step: simplify the borders</span>
@@ -225,8 +227,8 @@
 <span class="n">bayern</span> <span class="o">=</span> <span class="n">bayern</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mf">5e3</span><span class="p">)</span><span class="o">.</span><span class="n">coloring</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
-<section id="data-visualisation">
+</div>
+<div class="section" id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 
@@ -246,8 +248,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="coats-of-arms">
+</div>
+<div class="section" id="coats-of-arms">
 <h2>Coats of arms<a class="headerlink" href="#coats-of-arms" title="Permalink to this headline">¶</a></h2>
 <div id="bayern_wappen"></div>
 
@@ -347,8 +349,8 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
