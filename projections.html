@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRS and projections &mdash; Cartes 0.6 documentation</title>
+  <title>CRS and projections &mdash; Cartes 0.7 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
@@ -31,7 +31,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OpenStreetMap" href="osm.html" />
+    <link rel="next" title="Atlas" href="atlas.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
@@ -64,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#use-custom-projection-in-altair">Use custom projection in Altair</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="atlas.html">Atlas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="osm.html">OpenStreetMap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualisation.html">Data visualisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Example gallery</a></li>
@@ -11483,12 +11484,13 @@ Altair, in which case an exception could be raised.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-d9bbd40643504970b3e4ac10c45662e2"></div>
+<div id="altair-viz-0d83e1a6377743069f6d68369dc7027a"></div>
 <script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d9bbd40643504970b3e4ac10c45662e2") {
-      outputDiv = document.getElementById("altair-viz-d9bbd40643504970b3e4ac10c45662e2");
+    if (outputDiv.id !== "altair-viz-0d83e1a6377743069f6d68369dc7027a") {
+      outputDiv = document.getElementById("altair-viz-0d83e1a6377743069f6d68369dc7027a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -11497,15 +11499,21 @@ Altair, in which case an exception could be raised.</p>
       "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
     };
 
-    function loadScript(lib) {
-      return new Promise(function(resolve, reject) {
-        var s = document.createElement('script');
-        s.src = paths[lib];
-        s.async = true;
-        s.onload = () => resolve(paths[lib]);
-        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-        document.getElementsByTagName("head")[0].appendChild(s);
-      });
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
     }
 
     function showError(err) {
@@ -11521,12 +11529,10 @@ Altair, in which case an exception could be raised.</p>
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else if (typeof vegaEmbed === "function") {
-      displayChart(vegaEmbed);
     } else {
-      loadScript("vega")
-        .then(() => loadScript("vega-lite"))
-        .then(() => loadScript("vega-embed"))
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "4.17.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
@@ -11541,7 +11547,7 @@ Altair, in which case an exception could be raised.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="osm.html" class="btn btn-neutral float-right" title="OpenStreetMap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="atlas.html" class="btn btn-neutral float-right" title="Atlas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
