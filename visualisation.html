@@ -31,7 +31,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example gallery" href="gallery.html" />
+    <link rel="next" title="Altair" href="altair.html" />
     <link rel="prev" title="OpenStreetMap" href="osm.html" /> 
 </head>
 
@@ -61,9 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atlas.html">Atlas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="osm.html">OpenStreetMap</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data visualisation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#matplotlib">Matplotlib</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#altair">Altair</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ipyleaflet">ipyleaflet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="altair.html">Altair</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gallery.html">Example gallery</a></li>
@@ -97,18 +95,18 @@
              
   <section id="data-visualisation">
 <h1>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline"></a></h1>
-<section id="matplotlib">
-<h2>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline"></a></h2>
-<p>(coming soon, see gallery in the meantime)</p>
-</section>
-<section id="altair">
-<h2>Altair<a class="headerlink" href="#altair" title="Permalink to this headline"></a></h2>
-<p>(coming soon, see gallery in the meantime)</p>
-</section>
-<section id="ipyleaflet">
-<h2>ipyleaflet<a class="headerlink" href="#ipyleaflet" title="Permalink to this headline"></a></h2>
-<p>(in a future version)</p>
-</section>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">Guidance for Matplotlib and ipyleaflet coming soon.</div>
+<div class="line">Refer to the gallery in the meantime.</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="altair.html">Altair</a></li>
+</ul>
+</div>
 </section>
 
 
@@ -116,7 +114,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="osm.html" class="btn btn-neutral float-left" title="OpenStreetMap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="gallery.html" class="btn btn-neutral float-right" title="Example gallery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="altair.html" class="btn btn-neutral float-right" title="Altair" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -154,6 +152,15 @@
   gtag("js", new Date());
 
   gtag("config", "UA-412789-4");
+</script>
+
+<!-- Remove hard-coded borders on pandas dataframes -->
+<script>
+  const elements = document.getElementsByClassName("dataframe");
+  for (let i = 0; i < elements.length; i++) {
+    const elt = elements[i];
+    elt.setAttribute("border", 0);
+  }
 </script>
 
 

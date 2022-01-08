@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="European (major) capitals" href="gallery/capitals.html" />
-    <link rel="prev" title="Data visualisation" href="visualisation.html" /> 
+    <link rel="prev" title="Altair" href="altair.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -134,7 +134,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="visualisation.html" class="btn btn-neutral float-left" title="Data visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="altair.html" class="btn btn-neutral float-left" title="Altair" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="gallery/capitals.html" class="btn btn-neutral float-right" title="European (major) capitals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -173,6 +173,15 @@
   gtag("js", new Date());
 
   gtag("config", "UA-412789-4");
+</script>
+
+<!-- Remove hard-coded borders on pandas dataframes -->
+<script>
+  const elements = document.getElementsByClassName("dataframe");
+  for (let i = 0; i < elements.length; i++) {
+    const elt = elements[i];
+    elt.setAttribute("border", 0);
+  }
 </script>
 
 

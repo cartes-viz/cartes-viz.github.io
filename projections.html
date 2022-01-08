@@ -61,7 +61,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction-example">Introduction example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#valid-projections-at-a-given-location">Valid projections at a given location</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adjusting-bounds-for-a-projection">Adjusting bounds for a projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#use-custom-projection-in-altair">Use custom projection in Altair</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="atlas.html">Atlas</a></li>
@@ -11438,106 +11437,9 @@ L 7.2 170.28
   </clipPath>
  </defs>
 </svg>
-<pre>&lt;__main__.Custom object at 0x7fbc4d348090&gt;</pre></section>
-<section id="use-custom-projection-in-altair">
-<h2>Use custom projection in Altair<a class="headerlink" href="#use-custom-projection-in-altair" title="Permalink to this headline"></a></h2>
-<p>Projections can be passed to the <code class="docutils literal notranslate"><span class="pre">.project()</span></code> method with the <code class="docutils literal notranslate"><span class="pre">**</span></code> unpacking
-operator. Note that not all projections defined in custom have an equivalent in
-Altair, in which case an exception could be raised.</p>
-<div class="jupyter_cell jupyter_container docutils container">
-<div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
-<span class="kn">from</span> <span class="nn">vega_datasets</span> <span class="kn">import</span> <span class="n">data</span>
-
-<span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Orthographic</span><span class="p">,</span>
-    <span class="n">GeoscienceAustraliaLambert</span><span class="p">,</span>
-    <span class="n">EPSG_3348</span><span class="p">,</span>
-    <span class="n">UTM</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">world</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">topo_feature</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">world_110m</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;countries&quot;</span><span class="p">)</span>
-<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">world</span><span class="p">)</span><span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-
-<span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s2">&quot;mercator&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mercator&quot;</span><span class="p">),</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="o">**</span><span class="n">Orthographic</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Orthographic&quot;</span><span class="p">),</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="o">**</span><span class="n">Orthographic</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">35</span><span class="p">))</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Orthographic(110, 35)&quot;</span><span class="p">),</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="o">**</span><span class="n">GeoscienceAustraliaLambert</span><span class="p">())</span>
-        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Geoscience Australia Lambert&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="s2">&quot;datum.id == 36&quot;</span><span class="p">),</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="o">**</span><span class="n">EPSG_3348</span><span class="p">())</span>
-        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;EPSG:3348&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="s2">&quot;datum.id == 124&quot;</span><span class="p">),</span>
-        <span class="n">base</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="o">**</span><span class="n">UTM</span><span class="p">(</span><span class="mi">47</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;UTM(47)&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="s2">&quot;datum.id == 356&quot;</span><span class="p">),</span>
-        <span class="n">columns</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">configure_view</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">configure_title</span><span class="p">(</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Fira Sans&quot;</span><span class="p">,</span> <span class="n">fontSize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">configure_legend</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<div id="altair-viz-de54e839f81645c8912476a1e00b3301"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-de54e839f81645c8912476a1e00b3301") {
-      outputDiv = document.getElementById("altair-viz-de54e839f81645c8912476a1e00b3301");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.17.0?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "4.17.0"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300, "stroke": null}, "legend": {"columns": 6, "orient": "bottom"}, "title": {"anchor": "start", "font": "Fira Sans", "fontSize": 14}}, "concat": [{"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"type": "mercator"}, "title": "Mercator", "width": 200}, {"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"rotate": [-0.0, -0.0, 0], "type": "orthographic"}, "title": "Orthographic", "width": 200}, {"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"rotate": [-110, -35, 0], "type": "orthographic"}, "title": "Orthographic(110, 35)", "width": 200}, {"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"parallels": [-18, -36], "rotate": [-134, 0, 0], "type": "conicConformal"}, "title": "Geoscience Australia Lambert", "transform": [{"filter": "datum.id == 36"}], "width": 200}, {"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"parallels": [49, 77], "rotate": [91.8666666666667, -63.390675, 0], "type": "conicConformal"}, "title": "EPSG:3348", "transform": [{"filter": "datum.id == 124"}], "width": 200}, {"mark": {"type": "geoshape", "stroke": "white"}, "height": 200, "projection": {"rotate": [-99, 0, 0], "type": "transverseMercator"}, "title": "UTM(47)", "transform": [{"filter": "datum.id == 356"}], "width": 200}], "columns": 3, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json"}, {"mode": "vega-lite"});
-</script></div></div>
+<pre>&lt;__main__.Custom object at 0x7fbc4d348090&gt;</pre><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See also: <a class="reference external" href="altair.html">Projections in Altair</a></p>
 </div>
 </section>
 </section>
@@ -11585,6 +11487,15 @@ Altair, in which case an exception could be raised.</p>
   gtag("js", new Date());
 
   gtag("config", "UA-412789-4");
+</script>
+
+<!-- Remove hard-coded borders on pandas dataframes -->
+<script>
+  const elements = document.getElementsByClassName("dataframe");
+  for (let i = 0; i < elements.length; i++) {
+    const elt = elements[i];
+    elt.setAttribute("border", 0);
+  }
 </script>
 
 
