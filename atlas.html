@@ -300,7 +300,7 @@ Altair.</p>
 </div>
 </li>
 <li><div class="line-block">
-<div class="line">a <code class="docutils literal notranslate"><span class="pre">gdf</span></code> element for the corresponding Geopandas dataframe.</div>
+<div class="line">a <code class="docutils literal notranslate"><span class="pre">data</span></code> element for the corresponding Geopandas dataframe.</div>
 <div class="line">This option is comfortable for exploring data, or for further postprocessing.</div>
 </div>
 </li>
@@ -324,13 +324,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-4181c389c37b4766a54d9ef154f5f064"></div>
+<div id="altair-viz-1361170edc2247cfa06fa19bd2c1d230"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4181c389c37b4766a54d9ef154f5f064") {
-      outputDiv = document.getElementById("altair-viz-4181c389c37b4766a54d9ef154f5f064");
+    if (outputDiv.id !== "altair-viz-1361170edc2247cfa06fa19bd2c1d230") {
+      outputDiv = document.getElementById("altair-viz-1361170edc2247cfa06fa19bd2c1d230");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -382,7 +382,7 @@ Altair.</p>
 <p>Corresponding data is available, and stored in cache:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">europe</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">europe</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -550,10 +550,10 @@ Altair.</p>
 </section>
 <section id="simple-maps">
 <h2>Simple maps<a class="headerlink" href="#simple-maps" title="Permalink to this headline"></a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">gdf</span></code> attribute is convenient to explore data and create a first visualisation:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute is convenient to explore data and create a first visualisation:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -793,7 +793,7 @@ Altair.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">JGD2000</span>
 
 <span class="p">(</span>
-    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">))</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">))</span>
     <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
         <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span>
@@ -812,13 +812,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-0cbd9e73def94f48bfb2ed411afd8fe2"></div>
+<div id="altair-viz-127e5d480a26403e99a62da44ce0824c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0cbd9e73def94f48bfb2ed411afd8fe2") {
-      outputDiv = document.getElementById("altair-viz-0cbd9e73def94f48bfb2ed411afd8fe2");
+    if (outputDiv.id !== "altair-viz-127e5d480a26403e99a62da44ce0824c") {
+      outputDiv = document.getElementById("altair-viz-127e5d480a26403e99a62da44ce0824c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -895,13 +895,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-318d7410801241c4a3029d3d22317e2f"></div>
+<div id="altair-viz-5def1f25fc3047c0ab52e67ccaae3c78"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-318d7410801241c4a3029d3d22317e2f") {
-      outputDiv = document.getElementById("altair-viz-318d7410801241c4a3029d3d22317e2f");
+    if (outputDiv.id !== "altair-viz-5def1f25fc3047c0ab52e67ccaae3c78") {
+      outputDiv = document.getElementById("altair-viz-5def1f25fc3047c0ab52e67ccaae3c78");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
