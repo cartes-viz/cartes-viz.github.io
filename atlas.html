@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atlas &mdash; Cartes 0.7.2 documentation</title>
+  <title>Atlas &mdash; Cartes 0.7.3 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
@@ -19,7 +19,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -27,7 +29,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -85,8 +87,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Atlas</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Atlas</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/atlas.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,9 +99,9 @@
            <div itemprop="articleBody">
              
   <section id="atlas">
-<h1>Atlas<a class="headerlink" href="#atlas" title="Permalink to this headline"></a></h1>
+<h1>Atlas<a class="headerlink" href="#atlas" title="Permalink to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>Cartes comes with a facilitated access to repositories of topojson files online.
 topojson is a very lightweight format compared to geojson, so it is excellent
 for transferring files over the Internet, and for a direct integration in
@@ -131,7 +133,7 @@ Altair.</p>
 <p>The list of maps available in each repository is available with each module:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">default</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">default</span>
 
 <span class="n">default</span>
 </pre></div>
@@ -247,11 +249,11 @@ Altair.</p>
 </div>
 </section>
 <section id="filtering-the-atlas-collection">
-<h2>Filtering the atlas collection<a class="headerlink" href="#filtering-the-atlas-collection" title="Permalink to this headline"></a></h2>
+<h2>Filtering the atlas collection<a class="headerlink" href="#filtering-the-atlas-collection" title="Permalink to this heading"></a></h2>
 <p>You can filter the table with regular accessors:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default</span><span class="o">.</span><span class="n">europe</span>  <span class="c1"># equivalent to from cartes.atlas import europe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">default</span><span class="o">.</span><span class="n">europe</span>  <span class="c1"># equivalent to from cartes.atlas import europe</span>
 </pre></div>
 </div>
 </div>
@@ -307,7 +309,7 @@ Altair.</p>
 </ul>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 
 <span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">europe</span>
 <span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">EuroPP</span>
@@ -324,13 +326,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-25f8e558395148e6b36cb785c056354b"></div>
+<div id="altair-viz-15caa7d41ba64a5f8bb37210b649f243"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-25f8e558395148e6b36cb785c056354b") {
-      outputDiv = document.getElementById("altair-viz-25f8e558395148e6b36cb785c056354b");
+    if (outputDiv.id !== "altair-viz-15caa7d41ba64a5f8bb37210b649f243") {
+      outputDiv = document.getElementById("altair-viz-15caa7d41ba64a5f8bb37210b649f243");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -382,7 +384,7 @@ Altair.</p>
 <p>Corresponding data is available, and stored in cache:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">europe</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">europe</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -454,7 +456,7 @@ Altair.</p>
 <p>It is possible to chain filtering:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">japan</span>  <span class="c1"># or from cartes.atlas.default import japan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">japan</span>  <span class="c1"># or from cartes.atlas.default import japan</span>
 
 <span class="n">japan</span>
 </pre></div>
@@ -506,7 +508,7 @@ Altair.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span>
 </pre></div>
 </div>
 </div>
@@ -549,11 +551,11 @@ Altair.</p>
 </div>
 </section>
 <section id="simple-maps">
-<h2>Simple maps<a class="headerlink" href="#simple-maps" title="Permalink to this headline"></a></h2>
+<h2>Simple maps<a class="headerlink" href="#simple-maps" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute is convenient to explore data and create a first visualisation:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">15</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +792,7 @@ Altair.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">JGD2000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">JGD2000</span>
 
 <span class="p">(</span>
     <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">))</span>
@@ -812,13 +814,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-9f5c0d35e1524f5db54c4cd5269049d5"></div>
+<div id="altair-viz-f2cb6823ba7646eaa52664c02acf305f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9f5c0d35e1524f5db54c4cd5269049d5") {
-      outputDiv = document.getElementById("altair-viz-9f5c0d35e1524f5db54c4cd5269049d5");
+    if (outputDiv.id !== "altair-viz-f2cb6823ba7646eaa52664c02acf305f") {
+      outputDiv = document.getElementById("altair-viz-f2cb6823ba7646eaa52664c02acf305f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -874,7 +876,7 @@ Altair.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
     <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">default</span><span class="o">.</span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">topo_feature</span><span class="p">)</span>
     <span class="o">.</span><span class="n">mark_geoshape</span><span class="p">(</span><span class="n">stroke</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
@@ -895,13 +897,13 @@ Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-2c0677fa73ff4774a1050e5cce31845b"></div>
+<div id="altair-viz-47316273ffcb42d7a477d5ad80c97937"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-2c0677fa73ff4774a1050e5cce31845b") {
-      outputDiv = document.getElementById("altair-viz-2c0677fa73ff4774a1050e5cce31845b");
+    if (outputDiv.id !== "altair-viz-47316273ffcb42d7a477d5ad80c97937") {
+      outputDiv = document.getElementById("altair-viz-47316273ffcb42d7a477d5ad80c97937");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -957,12 +959,12 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 </div>
 </section>
 <section id="tricks-for-filtering">
-<h2>Tricks for filtering<a class="headerlink" href="#tricks-for-filtering" title="Permalink to this headline"></a></h2>
+<h2>Tricks for filtering<a class="headerlink" href="#tricks-for-filtering" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p>A final <code class="docutils literal notranslate"><span class="pre">_</span></code> in a filtering attribute negates it:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world</span>
 
 <span class="n">world</span><span class="o">.</span><span class="n">countries</span>
 </pre></div>
@@ -1014,7 +1016,7 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">world</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">sans_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">world</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">sans_</span>
 </pre></div>
 </div>
 </div>
@@ -1059,7 +1061,7 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 <li><p>An attribute starting with a number yields a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">_</span></code> prefix:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world_atlas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world_atlas</span>
 
 <span class="n">world_atlas</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">_10</span>
 </pre></div>
@@ -1117,7 +1119,7 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 and forget about <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">world_atlas</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="s2">&quot;-10&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">world_atlas</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="s2">&quot;-10&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
