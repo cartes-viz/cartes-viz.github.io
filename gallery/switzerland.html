@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swiss cantons &mdash; Cartes 0.7.4 documentation</title>
+  <title>Swiss cantons &mdash; Cartes 0.7.5 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
@@ -16,6 +16,8 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -152,18 +154,29 @@ compatible with latitude and longitude channels in Altair.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<div id="altair-viz-136a126c8f0f4a419eafa9bc32673c0a"></div>
+<style>
+  #altair-viz-c58dfca4b510441da37761935c18df5d.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-c58dfca4b510441da37761935c18df5d.vega-embed details,
+  #altair-viz-c58dfca4b510441da37761935c18df5d.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-c58dfca4b510441da37761935c18df5d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-136a126c8f0f4a419eafa9bc32673c0a") {
-      outputDiv = document.getElementById("altair-viz-136a126c8f0f4a419eafa9bc32673c0a");
+    if (outputDiv.id !== "altair-viz-c58dfca4b510441da37761935c18df5d") {
+      outputDiv = document.getElementById("altair-viz-c58dfca4b510441da37761935c18df5d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.6.1?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -199,12 +212,12 @@ compatible with latitude and longitude channels in Altair.</p>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.6.1"))
+        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "legend": {"columns": 6, "labelFont": "Fira Sans, Lato, sans-serif", "labelFontSize": 12, "orient": "bottom", "titleFont": "Fira Sans, Lato, sans-serif", "titleFontSize": 14}, "text": {"font": "Fira Sans, Lato, sans-serif", "size": 15}}, "layer": [{"mark": {"type": "geoshape", "opacity": 0.9, "stroke": "white", "strokeWidth": 1.5}, "encoding": {"color": {"field": "properties.NAME_1", "title": "Canton | Kanton", "type": "nominal"}, "tooltip": {"field": "properties.NAME_1", "type": "nominal"}}, "transform": [{"filter": "datum.properties.TYPE_1 != 'Water body'"}]}, {"mark": {"type": "geoshape", "color": "steelblue", "opacity": 0.5, "stroke": "white", "strokeWidth": 1.5}, "transform": [{"filter": "datum.properties.TYPE_1 == 'Water body'"}]}], "data": {"url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/dach-states.json", "format": {"feature": "layer", "type": "topojson"}}, "height": 500, "projection": {"rotate": [-3, 0, 0], "type": "transverseMercator"}, "transform": [{"filter": "datum.properties.ISO == 'CHE'"}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.6.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "legend": {"columns": 6, "labelFont": "Fira Sans, Lato, sans-serif", "labelFontSize": 12, "orient": "bottom", "titleFont": "Fira Sans, Lato, sans-serif", "titleFontSize": 14}, "text": {"font": "Fira Sans, Lato, sans-serif", "size": 15}}, "layer": [{"mark": {"type": "geoshape", "opacity": 0.9, "stroke": "white", "strokeWidth": 1.5}, "encoding": {"color": {"field": "properties.NAME_1", "title": "Canton | Kanton", "type": "nominal"}, "tooltip": {"field": "properties.NAME_1", "type": "nominal"}}, "transform": [{"filter": "datum.properties.TYPE_1 != 'Water body'"}]}, {"mark": {"type": "geoshape", "color": "steelblue", "opacity": 0.5, "stroke": "white", "strokeWidth": 1.5}, "transform": [{"filter": "datum.properties.TYPE_1 == 'Water body'"}]}], "data": {"url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/dach-states.json", "format": {"feature": "layer", "type": "topojson"}}, "height": 500, "projection": {"rotate": [-3, 0, 0], "type": "transverseMercator"}, "transform": [{"filter": "datum.properties.ISO == 'CHE'"}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json"}, {"mode": "vega-lite"});
 </script></div></div>
 </div>
 </section>
