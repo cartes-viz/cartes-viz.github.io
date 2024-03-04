@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpenStreetMap &mdash; Cartes 0.7.6 documentation</title>
+  <title>OpenStreetMap &mdash; Cartes 0.7.7 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
@@ -20,16 +20,15 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3f63b2c"></script>
+        <script src="_static/documentation_options.js?v=35f4697d"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager/dist/embed-amd.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -113,10 +112,10 @@
            <div itemprop="articleBody">
              
   <section id="openstreetmap">
-<h1>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Permalink to this heading"></a></h1>
+<h1>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Link to this heading"></a></h1>
 <p>The library offers some facilities to request and parse the results from the OpenStreetMap Nominatim (search engine) and Overpass (map data database) API.</p>
 <section id="nominatim-api">
-<h2>Nominatim API<a class="headerlink" href="#nominatim-api" title="Permalink to this heading"></a></h2>
+<h2>Nominatim API<a class="headerlink" href="#nominatim-api" title="Link to this heading"></a></h2>
 <p>You may search for a name or address (forward search) or look up data by its geographic coordinate (reverse search) or by its OpenStreetMap identifier.</p>
 <ul>
 <li><p>forward search (from natural language name):</p>
@@ -494,11 +493,11 @@
 </ul>
 </section>
 <section id="overpass-api">
-<h2>Overpass API<a class="headerlink" href="#overpass-api" title="Permalink to this heading"></a></h2>
+<h2>Overpass API<a class="headerlink" href="#overpass-api" title="Link to this heading"></a></h2>
 <p>The Overpass API is a read-only API to selected parts of the OpenStreetMap data. It acts as a database where the end user can send queries using a dedicated <cite>query language</cite> (<a class="reference external" href="https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_API_by_Example">Overpass QL</a>) in order to collect nodes, ways and relations referenced in OpenStreetMap.</p>
 <p>The cartes library offers a direct access, with some helpers to generate the queries from a more natural Python call. The whole Overpass QL possibilities are not covered, but most simple use cases are.</p>
 <section id="overpass-ql-as-is">
-<h3>Overpass QL “as is”<a class="headerlink" href="#overpass-ql-as-is" title="Permalink to this heading"></a></h3>
+<h3>Overpass QL “as is”<a class="headerlink" href="#overpass-ql-as-is" title="Link to this heading"></a></h3>
 <p>If you know how to write your query in Overpass QL, you can still benefit from the caching and parsing possibilities of the library with the query argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
 
@@ -672,7 +671,7 @@
 </div>
 </section>
 <section id="a-simple-request-for-query-language-ql-illiterate-people">
-<h3>A simple request for Query Language (QL) illiterate people<a class="headerlink" href="#a-simple-request-for-query-language-ql-illiterate-people" title="Permalink to this heading"></a></h3>
+<h3>A simple request for Query Language (QL) illiterate people<a class="headerlink" href="#a-simple-request-for-query-language-ql-illiterate-people" title="Link to this heading"></a></h3>
 <div class="line-block">
 <div class="line">This request selects all parks within Helsinki area where playgrounds for kids are available.</div>
 <div class="line"><strong>With Cartes, it is possible to generate a simpler request like “select all parks within Helsinki area”</strong>.</div>
@@ -696,7 +695,7 @@
 </div>
 </section>
 <section id="writing-your-own-queries">
-<h3>Writing your own queries<a class="headerlink" href="#writing-your-own-queries" title="Permalink to this heading"></a></h3>
+<h3>Writing your own queries<a class="headerlink" href="#writing-your-own-queries" title="Link to this heading"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The API may change in the coming weeks. Different use cases may lead to different specifications.</p>
@@ -782,9 +781,9 @@
 </section>
 </section>
 <section id="post-processing">
-<h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this heading"></a></h2>
+<h2>Post-processing<a class="headerlink" href="#post-processing" title="Link to this heading"></a></h2>
 <section id="geometry-simplification">
-<h3>Geometry simplification<a class="headerlink" href="#geometry-simplification" title="Permalink to this heading"></a></h3>
+<h3>Geometry simplification<a class="headerlink" href="#geometry-simplification" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">simplify()</span></code> method associated to GeoPandas dataframes comes from Shapely. Its major default comes from the fact that two neighbouring geometries may be simplified differently on the borders they share.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
 
@@ -843,7 +842,7 @@
   .catch(console.warn);
 </script></section>
 <section id="graph-colouring">
-<h3>Graph colouring<a class="headerlink" href="#graph-colouring" title="Permalink to this heading"></a></h3>
+<h3>Graph colouring<a class="headerlink" href="#graph-colouring" title="Link to this heading"></a></h3>
 <p>The four-colour theorem states that you can color a map with no more than 4 colors. If you only base yourself on the name of the regions you will map, you will use many colors, at the risk of looping and use the same (or similar) colors for two neighbouring regions.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Overpass</span></code> object offers as <code class="docutils literal notranslate"><span class="pre">.coloring()</span></code> method which builds a NetworkX graph and computes a greedy colouring algorithm on it.</p>
 <p>The following map of administrative states of Austria and colours it with both methods. The resulting graph is also accessible via the <code class="docutils literal notranslate"><span class="pre">graph</span></code> attribute.</p>
@@ -901,7 +900,7 @@
 </div>
 </section>
 <section id="distances-and-areas">
-<h3>Distances and areas<a class="headerlink" href="#distances-and-areas" title="Permalink to this heading"></a></h3>
+<h3>Distances and areas<a class="headerlink" href="#distances-and-areas" title="Link to this heading"></a></h3>
 <p>The methods <code class="docutils literal notranslate"><span class="pre">.area()</span></code> and <code class="docutils literal notranslate"><span class="pre">.length()</span></code> compute the area (resp. the length) of each geometry in square meters (resp. meters). They can be useful to select, sort or visualise geometries based on this criterion.</p>
 <p>In the following example, we sort Helsinki public parks by size:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parks</span><span class="o">.</span><span class="n">area</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
