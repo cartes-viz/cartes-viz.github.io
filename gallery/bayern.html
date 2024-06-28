@@ -179,7 +179,7 @@
   .then(result => console.log(result))
   .catch(console.warn);
 </script><p>The first map shows one main issue: only <cite>Landkreis</cite> display a license plate code, not cities outside a <cite>Kreis</cite> (<cite>Kreisfreie Stadt</cite>).</p>
-<p>Since the data returned by OpenStreetMap contains a Wikidata identifier, we use it to fill the missing information. Since the whole process involves many small downloads which can be run in parallel, we use in the following example the asynchronous library <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code> rather than the popular “blocking” <code class="docutils literal notranslate"><span class="pre">requests</span></code> library.</p>
+<p>Since the data returned by OpenStreetMap contains a Wikidata identifier, we use it to fill the missing information.  Since the whole process involves many small downloads which can be run in parallel, we use the async framework for that.</p>
 <p>Wikidata returns comprehensive information in JSON format, with popular fields encoded with identifiers. We focus here on:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">P394</span></code>: licence plate code;</p></li>
