@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tokyo metro map &mdash; Cartes 0.8.4 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
       <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
@@ -19,7 +19,7 @@
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=b41f4c93"></script>
-      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/thebelab-helper.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -130,7 +130,7 @@
 </script><section id="data-acquisition">
 <h2>Data acquisition<a class="headerlink" href="#data-acquisition" title="Link to this heading"></a></h2>
 <p>We will take two different datasets from OpenStreetMap: background information (the 23 Tokyo wards) and the subway lines. For people familiar with Tokyo subway systems, this does not include the JR lines (incl. Yamanote line).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.osm</span> <span class="kn">import</span> <span class="n">Overpass</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.osm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Overpass</span>
 
 <span class="n">tokyo_wards</span> <span class="o">=</span> <span class="n">Overpass</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
     <span class="n">area</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name:en&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;admin_level&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
@@ -267,9 +267,9 @@
     </tr>
   </tbody>
 </table><p>Then we merge the lines into single elements, also in order to reduce the size of resulting JSON. Line simplification does not really work well here if we want subway lines to still go through the stations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">linemerge</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely.ops</span><span class="w"> </span><span class="kn">import</span> <span class="n">linemerge</span>
 
-<span class="k">def</span> <span class="nf">merge_line</span><span class="p">(</span><span class="n">elt</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_line</span><span class="p">(</span><span class="n">elt</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="n">linemerge</span><span class="p">(</span><span class="n">elt</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
@@ -286,7 +286,7 @@
 </section>
 <section id="data-visualisation">
 <h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
 
 <span class="c1"># First the colors</span>
 <span class="n">line_scale</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span>

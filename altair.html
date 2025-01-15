@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Altair &mdash; Cartes 0.8.4 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
       <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
@@ -19,7 +19,7 @@
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=b41f4c93"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/thebelab-helper.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -113,10 +113,10 @@ with the <code class="docutils literal notranslate"><span class="pre">**</span><
 custom have an equivalent in Altair, in which case an exception could be raised.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
-<span class="kn">from</span> <span class="nn">vega_datasets</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vega_datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
 
-<span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Orthographic</span><span class="p">,</span>
     <span class="n">GeoscienceAustraliaLambert</span><span class="p">,</span>
     <span class="n">EPSG_3348</span><span class="p">,</span>
@@ -153,24 +153,25 @@ custom have an equivalent in Altair, in which case an exception could be raised.
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09.vega-embed {
+  #altair-viz-2d82dae89bce431f888eadb2830e8342.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09.vega-embed details,
-  #altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09.vega-embed details summary {
+  #altair-viz-2d82dae89bce431f888eadb2830e8342.vega-embed details,
+  #altair-viz-2d82dae89bce431f888eadb2830e8342.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09"></div>
+<div id="altair-viz-2d82dae89bce431f888eadb2830e8342"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09") {
-      outputDiv = document.getElementById("altair-viz-cecd2e30eb7742b3b8ad6ba235ed5d09");
+    if (outputDiv.id !== "altair-viz-2d82dae89bce431f888eadb2830e8342") {
+      outputDiv = document.getElementById("altair-viz-2d82dae89bce431f888eadb2830e8342");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -207,7 +208,8 @@ custom have an equivalent in Altair, in which case an exception could be raised.
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -227,10 +229,10 @@ in Altair.</p>
 But first, the data, together with the definition of a bounding box.</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">EuroPP</span><span class="p">,</span> <span class="n">Orthographic</span>
-<span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
-<span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">EuroPP</span><span class="p">,</span> <span class="n">Orthographic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">world</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">box</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">sans_</span><span class="o">.</span><span class="n">data</span>
 <span class="n">projection</span> <span class="o">=</span> <span class="n">EuroPP</span><span class="p">()</span>
@@ -251,24 +253,25 @@ But first, the data, together with the definition of a bounding box.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-2795c42218a948f29544501b9ea8e64d.vega-embed {
+  #altair-viz-9c68906902e343fbb512b89e698d619d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-2795c42218a948f29544501b9ea8e64d.vega-embed details,
-  #altair-viz-2795c42218a948f29544501b9ea8e64d.vega-embed details summary {
+  #altair-viz-9c68906902e343fbb512b89e698d619d.vega-embed details,
+  #altair-viz-9c68906902e343fbb512b89e698d619d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-2795c42218a948f29544501b9ea8e64d"></div>
+<div id="altair-viz-9c68906902e343fbb512b89e698d619d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-2795c42218a948f29544501b9ea8e64d") {
-      outputDiv = document.getElementById("altair-viz-2795c42218a948f29544501b9ea8e64d");
+    if (outputDiv.id !== "altair-viz-9c68906902e343fbb512b89e698d619d") {
+      outputDiv = document.getElementById("altair-viz-9c68906902e343fbb512b89e698d619d");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -305,7 +308,8 @@ But first, the data, together with the definition of a bounding box.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -332,24 +336,25 @@ intersecting the bounding box:</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-e27520d255fd4302a4865b3fa87d268c.vega-embed {
+  #altair-viz-f0e42b731d984679a7a44e848829fed6.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e27520d255fd4302a4865b3fa87d268c.vega-embed details,
-  #altair-viz-e27520d255fd4302a4865b3fa87d268c.vega-embed details summary {
+  #altair-viz-f0e42b731d984679a7a44e848829fed6.vega-embed details,
+  #altair-viz-f0e42b731d984679a7a44e848829fed6.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e27520d255fd4302a4865b3fa87d268c"></div>
+<div id="altair-viz-f0e42b731d984679a7a44e848829fed6"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e27520d255fd4302a4865b3fa87d268c") {
-      outputDiv = document.getElementById("altair-viz-e27520d255fd4302a4865b3fa87d268c");
+    if (outputDiv.id !== "altair-viz-f0e42b731d984679a7a44e848829fed6") {
+      outputDiv = document.getElementById("altair-viz-f0e42b731d984679a7a44e848829fed6");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -386,7 +391,8 @@ intersecting the bounding box:</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -433,24 +439,25 @@ is monkey-patched to Geopandas dataframe upon loading of the cartes library.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-b7fe65151e5a4efca1a160b3d727b861.vega-embed {
+  #altair-viz-2e63f66bd38f42fe94a503df5198ef88.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b7fe65151e5a4efca1a160b3d727b861.vega-embed details,
-  #altair-viz-b7fe65151e5a4efca1a160b3d727b861.vega-embed details summary {
+  #altair-viz-2e63f66bd38f42fe94a503df5198ef88.vega-embed details,
+  #altair-viz-2e63f66bd38f42fe94a503df5198ef88.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b7fe65151e5a4efca1a160b3d727b861"></div>
+<div id="altair-viz-2e63f66bd38f42fe94a503df5198ef88"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b7fe65151e5a4efca1a160b3d727b861") {
-      outputDiv = document.getElementById("altair-viz-b7fe65151e5a4efca1a160b3d727b861");
+    if (outputDiv.id !== "altair-viz-2e63f66bd38f42fe94a503df5198ef88") {
+      outputDiv = document.getElementById("altair-viz-2e63f66bd38f42fe94a503df5198ef88");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -487,7 +494,8 @@ is monkey-patched to Geopandas dataframe upon loading of the cartes library.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -512,7 +520,7 @@ argument helps adjusting those bounds.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
 
 <span class="c1"># Not ideal... for now!</span>
 <span class="n">github_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/</span><span class="si">{user}</span><span class="s2">/</span><span class="si">{repo}</span><span class="s2">/master/</span><span class="si">{path}</span><span class="s2">&quot;</span>
@@ -553,24 +561,25 @@ argument helps adjusting those bounds.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-692c74f5809345548abe4553622136e8.vega-embed {
+  #altair-viz-23ac74443594466280c9e34aed6cb4b8.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-692c74f5809345548abe4553622136e8.vega-embed details,
-  #altair-viz-692c74f5809345548abe4553622136e8.vega-embed details summary {
+  #altair-viz-23ac74443594466280c9e34aed6cb4b8.vega-embed details,
+  #altair-viz-23ac74443594466280c9e34aed6cb4b8.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-692c74f5809345548abe4553622136e8"></div>
+<div id="altair-viz-23ac74443594466280c9e34aed6cb4b8"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-692c74f5809345548abe4553622136e8") {
-      outputDiv = document.getElementById("altair-viz-692c74f5809345548abe4553622136e8");
+    if (outputDiv.id !== "altair-viz-23ac74443594466280c9e34aed6cb4b8") {
+      outputDiv = document.getElementById("altair-viz-23ac74443594466280c9e34aed6cb4b8");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -607,7 +616,8 @@ argument helps adjusting those bounds.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))

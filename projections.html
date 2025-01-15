@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CRS and projections &mdash; Cartes 0.8.4 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
       <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
@@ -19,7 +19,7 @@
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=b41f4c93"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/thebelab-helper.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -105,7 +105,7 @@
 <section id="introduction-example">
 <h2>Introduction example<a class="headerlink" href="#introduction-example" title="Link to this heading"></a></h2>
 <p>For instance, the Lambert93 projection is the default official one in France, used for tiles by the National Geographic Institute (IGN).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">Lambert93</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lambert93</span>
 <span class="n">Lambert93</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4089,7 +4089,7 @@ L 7.2 170.28
  </defs>
 </svg>
 <pre>&lt;abc.EPSG_2154 object at 0x7fbc61e1e130&gt;</pre><p>As displayed above, Lambert93 is nothing more than an alias for an EPSG specification. It is possible to obtain the same result with the following code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">EPSG_2154</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">EPSG_2154</span>
 <span class="n">EPSG_2154</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4101,7 +4101,7 @@ L 7.2 170.28
 <section id="valid-projections-at-a-given-location">
 <h2>Valid projections at a given location<a class="headerlink" href="#valid-projections-at-a-given-location" title="Link to this heading"></a></h2>
 <p>A list of valid projections is available with a call to the <code class="docutils literal notranslate"><span class="pre">valid_crs</span></code> functioni which accepts a string or any object implementing the <code class="docutils literal notranslate"><span class="pre">__geo_interface__</span></code> protocol:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">valid_crs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">valid_crs</span>
 <span class="n">valid_crs</span><span class="p">(</span><span class="s2">&quot;Rome, Italy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -4235,7 +4235,7 @@ L 7.2 170.28
   </table>
 </div>
 <p>You can then pick one for your future needs:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">EPSG_3034</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">EPSG_3034</span>
 <span class="n">EPSG_3034</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -6450,7 +6450,7 @@ L 7.2 170.28
 <section id="adjusting-bounds-for-a-projection">
 <h2>Adjusting bounds for a projection<a class="headerlink" href="#adjusting-bounds-for-a-projection" title="Link to this heading"></a></h2>
 <p>Some definitions in the library set very narrow bounds which are then incompatible with plotting in a larger area. It is possible to set different bounds by subclassing the projection.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes</span> <span class="kn">import</span> <span class="n">crs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes</span><span class="w"> </span><span class="kn">import</span> <span class="n">crs</span>
 <span class="n">crs</span><span class="o">.</span><span class="n">EPSG_6674</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8403,7 +8403,7 @@ L 7.2 170.28
   </clipPath>
  </defs>
 </svg>
-<pre>&lt;abc.EPSG_6674 object at 0x7fbc4d455680&gt;</pre><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Custom</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">EPSG_6674</span><span class="p">):</span>
+<pre>&lt;abc.EPSG_6674 object at 0x7fbc4d455680&gt;</pre><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Custom</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">EPSG_6674</span><span class="p">):</span>
     <span class="n">bbox</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;east_longitude&quot;</span><span class="p">:</span> <span class="mi">151</span><span class="p">,</span>
         <span class="s2">&quot;north_latitude&quot;</span><span class="p">:</span> <span class="mi">47</span><span class="p">,</span>

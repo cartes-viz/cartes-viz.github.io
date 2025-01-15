@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atlas &mdash; Cartes 0.8.4 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
       <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
@@ -19,7 +19,7 @@
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=b41f4c93"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/thebelab-helper.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -135,7 +135,7 @@ Altair.</p>
 <p>The list of maps available in each repository is available with each module:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">default</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">default</span>
 
 <span class="n">default</span>
 </pre></div>
@@ -311,10 +311,10 @@ Altair.</p>
 </ul>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
 
-<span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">europe</span>
-<span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">EuroPP</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">europe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">EuroPP</span>
 
 <span class="p">(</span>
     <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">europe</span><span class="o">.</span><span class="n">topo_feature</span><span class="p">)</span>
@@ -329,24 +329,25 @@ Altair.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-bdfa4a66356f4a67861a4209c8789307.vega-embed {
+  #altair-viz-058aca625f6e4ce5996d52615c92eac3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-bdfa4a66356f4a67861a4209c8789307.vega-embed details,
-  #altair-viz-bdfa4a66356f4a67861a4209c8789307.vega-embed details summary {
+  #altair-viz-058aca625f6e4ce5996d52615c92eac3.vega-embed details,
+  #altair-viz-058aca625f6e4ce5996d52615c92eac3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-bdfa4a66356f4a67861a4209c8789307"></div>
+<div id="altair-viz-058aca625f6e4ce5996d52615c92eac3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bdfa4a66356f4a67861a4209c8789307") {
-      outputDiv = document.getElementById("altair-viz-bdfa4a66356f4a67861a4209c8789307");
+    if (outputDiv.id !== "altair-viz-058aca625f6e4ce5996d52615c92eac3") {
+      outputDiv = document.getElementById("altair-viz-058aca625f6e4ce5996d52615c92eac3");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -383,7 +384,8 @@ Altair.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -469,7 +471,7 @@ Altair.</p>
 <p>It is possible to chain filtering:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">japan</span>  <span class="c1"># or from cartes.atlas.default import japan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">japan</span>  <span class="c1"># or from cartes.atlas.default import japan</span>
 
 <span class="n">japan</span>
 </pre></div>
@@ -805,7 +807,7 @@ Altair.</p>
 </div>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.crs</span> <span class="kn">import</span> <span class="n">JGD2000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">JGD2000</span>
 
 <span class="p">(</span>
     <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">japan</span><span class="o">.</span><span class="n">towns</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;NAME_1 == &quot;Shiga&quot;&#39;</span><span class="p">))</span>
@@ -828,24 +830,25 @@ Altair.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-e33b7706314d4802b94feb2137e2ac6d.vega-embed {
+  #altair-viz-f886f80da0b14b5b9a92b2492b98f2f8.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e33b7706314d4802b94feb2137e2ac6d.vega-embed details,
-  #altair-viz-e33b7706314d4802b94feb2137e2ac6d.vega-embed details summary {
+  #altair-viz-f886f80da0b14b5b9a92b2492b98f2f8.vega-embed details,
+  #altair-viz-f886f80da0b14b5b9a92b2492b98f2f8.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e33b7706314d4802b94feb2137e2ac6d"></div>
+<div id="altair-viz-f886f80da0b14b5b9a92b2492b98f2f8"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e33b7706314d4802b94feb2137e2ac6d") {
-      outputDiv = document.getElementById("altair-viz-e33b7706314d4802b94feb2137e2ac6d");
+    if (outputDiv.id !== "altair-viz-f886f80da0b14b5b9a92b2492b98f2f8") {
+      outputDiv = document.getElementById("altair-viz-f886f80da0b14b5b9a92b2492b98f2f8");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -882,7 +885,8 @@ Altair.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -922,24 +926,25 @@ Altair.</p>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-dde6e1f13098491fa81d90e410f2777c.vega-embed {
+  #altair-viz-1272637afba94e3c93651c4f93b45da0.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-dde6e1f13098491fa81d90e410f2777c.vega-embed details,
-  #altair-viz-dde6e1f13098491fa81d90e410f2777c.vega-embed details summary {
+  #altair-viz-1272637afba94e3c93651c4f93b45da0.vega-embed details,
+  #altair-viz-1272637afba94e3c93651c4f93b45da0.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-dde6e1f13098491fa81d90e410f2777c"></div>
+<div id="altair-viz-1272637afba94e3c93651c4f93b45da0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-dde6e1f13098491fa81d90e410f2777c") {
-      outputDiv = document.getElementById("altair-viz-dde6e1f13098491fa81d90e410f2777c");
+    if (outputDiv.id !== "altair-viz-1272637afba94e3c93651c4f93b45da0") {
+      outputDiv = document.getElementById("altair-viz-1272637afba94e3c93651c4f93b45da0");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -976,7 +981,8 @@ Altair.</p>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -999,7 +1005,7 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 <li><p>A final <code class="docutils literal notranslate"><span class="pre">_</span></code> in a filtering attribute negates it:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">world</span>
 
 <span class="n">world</span><span class="o">.</span><span class="n">countries</span>
 </pre></div>
@@ -1096,7 +1102,7 @@ names are then prefixed with <code class="docutils literal notranslate"><span cl
 <li><p>An attribute starting with a number yields a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">_</span></code> prefix:</p>
 <div class="jupyter_cell jupyter_container docutils container">
 <div class="cell_input code_cell docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cartes.atlas</span> <span class="kn">import</span> <span class="n">world_atlas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cartes.atlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">world_atlas</span>
 
 <span class="n">world_atlas</span><span class="o">.</span><span class="n">countries</span><span class="o">.</span><span class="n">_10</span>
 </pre></div>
